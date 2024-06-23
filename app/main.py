@@ -1,26 +1,22 @@
 from flask import Blueprint, jsonify, request
-from .models import db, Igra, Igrac, Trener
-from .services import save_player
+import os
 
 main = Blueprint('main', __name__)
 
-@main.route('/igre', methods=['GET'])
-def get_igre():
-    igre = Igra.query.all()
-    return jsonify([{'id': igra.id, 'naziv': igra.naziv} for igra in igre])
-
 @main.route('/registracija', methods=['POST'])
 def registracija():
+    data = request.json
+    ime = data['ime']
+    prezime = data['prezime']
+    korisnicko_ime = data['korisnicko_ime']
+    igra = data['igra']
+    trener = data['trener']
+
+    # Spremanje podataka u tekstualni fajl
     try:
-        data = request.json
-        ime = data['ime']
-        prezime = data['prezime']
-        korisnicko_ime = data['korisnickoIme']
-        igra_id = data['igraId']
-        trener_id = data['trenerId']
-
-        save_player(ime, prezime, korisnicko_ime, igra_id, trener_id)
-
+        file_path = os.path.join(os.getcwd(), 'registracije.txt')
+        with open(file_path, 'a') as f:
+            f.write(f"Ime: {ime}, Prezime: {prezime}, Korisnicko ime: {korisnicko_ime}, Igra: {igra}, Trener: {trener}\n")
         return jsonify({'message': 'Uspješno ste se registrirali za igru.'}), 201
     except Exception as e:
-        return jsonify({'error': str(e)}), 400
+        return jsonify({'message': 'Došlo je do greške prilikom spremanja u tekstualni fajl.', 'error': str(e)}), 500
