@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-coach - Igre</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>E-coach - Igre</h1>
+            <div class="header-right">
+                <a href="/" class="btn">Povratak</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container games">
+            <div class="game">
+                <img src="/static/images/game1.jpg" alt="Counter Strike 2" onclick="openPopup('Counter Strike 2')">
+            </div>
+            <div class="game">
+                <img src="/static/images/game2.jpg" alt="League of Legends" onclick="openPopup('League of Legends')">
+            </div>
+            <div class="game">
+                <img src="/static/images/game3.jpg" alt="Apex Legends" onclick="openPopup('Apex Legends')">
+            </div>
+            <div class="game">
+                <img src="/static/images/game4.jpg" alt="Valorant" onclick="openPopup('Valorant')">
+            </div>
+            <div class="game">
+                <img src="/static/images/game5.jpg" alt="Tekken" onclick="openPopup('Tekken')">
+            </div>
+            <div class="game">
+                <img src="/static/images/game6.jpg" alt="Overwatch 2" onclick="openPopup('Overwatch 2')">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <!-- Footer sadržaj -->
+        </div>
+    </footer>
+
+    <div class="popup" id="gamePopup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Registracija za igru <span id="gameName"></span></h2>
+            <div class="form-input">
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime" placeholder="Unesite ime" required>
+            </div>
+            <div class="form-input">
+                <label for="prezime">Prezime:</label>
+                <input type="text" id="prezime" name="prezime" placeholder="Unesite prezime" required>
+            </div>
+            <div class="form-input">
+                <label for="korisnicko_ime">Korisničko ime:</label>
+                <input type="text" id="korisnicko_ime" name="korisnicko_ime" placeholder="Unesite korisničko ime" required>
+            </div>
+            <div class="form-input">
+                <label for="trener">Odaberi trenera:</label>
+                <select id="trener" name="trener">
+                    <option value="trener1">Neo Čikić</option>
+                    <option value="trener2">Josip Džinić</option>
+                    <option value="trener3">Luka Brkić</option>
+                </select>
+            </div>
+            <button type="button" onclick="submitForm()">Potvrdi</button>
+        </div>
+    </div>
+
+    <script>
+        function openPopup(gameName) {
+            document.getElementById('gameName').textContent = gameName;
+            document.getElementById('gamePopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('gamePopup').style.display = 'none';
+        }
+
+        function submitForm() {
+            // Implementacija logike za slanje forme
+            // Ovdje možete dodati JavaScript kod za slanje forme (AJAX ili običan submit)
+            // Nakon što se forma pošalje, možete zatvoriti popup
+            closePopup();
+        }
+    </script>
+</body>
+</html>
