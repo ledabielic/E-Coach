@@ -4,36 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-coach - Igre</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <style>
+        /* Dodatni stilovi za games.html */
+        .games {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .game {
+            text-align: center;
+            width: 200px;
+        }
+
+        .game img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid lavender;
+            cursor: pointer;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .popup-content h2 {
+            color: #645394;
+            margin-bottom: 10px;
+        }
+
+        .popup-content .form-input {
+            margin-bottom: 10px;
+        }
+
+        .popup-content label {
+            display: block;
+            margin-bottom: 5px;
+            color: #645394;
+        }
+
+        .popup-content input,
+        .popup-content select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            background-color: #fde74c;
+            color: #645394;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #fac8c8;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #645394;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>E-coach - Igre</h1>
+            <h1>E-coach</h1>
             <div class="header-right">
-                <a href="/" class="btn">Povratak</a>
+                <a href="index.html" class="btn">Povratak</a>
             </div>
         </div>
     </header>
     <main>
-        <div class="container games">
-            <div class="game">
-                <img src="/static/images/game1.jpg" alt="Counter Strike 2" onclick="openPopup('Counter Strike 2')">
-            </div>
-            <div class="game">
-                <img src="/static/images/game2.jpg" alt="League of Legends" onclick="openPopup('League of Legends')">
-            </div>
-            <div class="game">
-                <img src="/static/images/game3.jpg" alt="Apex Legends" onclick="openPopup('Apex Legends')">
-            </div>
-            <div class="game">
-                <img src="/static/images/game4.jpg" alt="Valorant" onclick="openPopup('Valorant')">
-            </div>
-            <div class="game">
-                <img src="/static/images/game5.jpg" alt="Tekken" onclick="openPopup('Tekken')">
-            </div>
-            <div class="game">
-                <img src="/static/images/game6.jpg" alt="Overwatch 2" onclick="openPopup('Overwatch 2')">
+        <div class="container">
+            <div class="games">
+                <div class="game">
+                    <img src="/static/images/game1.jpg" alt="Igra 1" onclick="openPopup('Igra 1')">
+                </div>
+                <div class="game">
+                    <img src="/static/images/game2.jpg" alt="Igra 2" onclick="openPopup('Igra 2')">
+                </div>
+                <div class="game">
+                    <img src="/static/images/game3.jpg" alt="Igra 3" onclick="openPopup('Igra 3')">
+                </div>
+                <div class="game">
+                    <img src="/static/images/game4.jpg" alt="Igra 4" onclick="openPopup('Igra 4')">
+                </div>
+                <div class="game">
+                    <img src="/static/images/game5.jpg" alt="Igra 5" onclick="openPopup('Igra 5')">
+                </div>
+                <div class="game">
+                    <img src="/static/images/game6.jpg" alt="Igra 6" onclick="openPopup('Igra 6')">
+                </div>
             </div>
         </div>
     </main>
@@ -62,31 +152,15 @@
             <div class="form-input">
                 <label for="trener">Odaberi trenera:</label>
                 <select id="trener" name="trener">
-                    <option value="trener1">Neo Čikić</option>
-                    <option value="trener2">Josip Džinić</option>
-                    <option value="trener3">Luka Brkić</option>
+                    <option value="trener1">Trener 1</option>
+                    <option value="trener2">Trener 2</option>
+                    <option value="trener3">Trener 3</option>
                 </select>
             </div>
             <button type="button" onclick="submitForm()">Potvrdi</button>
         </div>
     </div>
 
-    <script>
-        function openPopup(gameName) {
-            document.getElementById('gameName').textContent = gameName;
-            document.getElementById('gamePopup').style.display = 'flex';
-        }
-
-        function closePopup() {
-            document.getElementById('gamePopup').style.display = 'none';
-        }
-
-        function submitForm() {
-            // Implementacija logike za slanje forme
-            // Ovdje možete dodati JavaScript kod za slanje forme (AJAX ili običan submit)
-            // Nakon što se forma pošalje, možete zatvoriti popup
-            closePopup();
-        }
-    </script>
+    <script src="static/js/scripts.js"></script>
 </body>
 </html>
