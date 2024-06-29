@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-coach</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>E-coach</h1>
+            <div class="header-right">
+                <a href="{{ url_for('main_html.games') }}" class="btn">Prijava</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+
+            <section id="about">
+                <h2>O nama</h2>
+                <p>E-coach je platforma posvećena poboljšanju vještina igrača u videoigrama kroz individualni pristup i profesionalno vođenje. Naš tim stručnjaka nudi personalizirane treninge i savjete kako bi svaki igrač postigao svoj maksimum.</p>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <section id="contact">
+                <h3>Kontaktirajte nas</h3>
+                <p>Za više informacija ili upite slobodno nas kontaktirajte putem emaila ili telefona.</p>
+                <p>Email: info@e-coach.com</p>
+                <p>Telefon: +1234567890</p>
+            </section>
+        </div>
+    </footer>
+</body>
+</html>
