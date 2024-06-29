@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>E-coach</h1>
+            <a href="{{ url_for('main_html.games') }}" class="btn">Povratak</a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method="POST" action="{{ url_for('main_html.create_game') }}">
+                <div class="form-input">
+                    <label for="naziv">Naziv igre:</label>
+                    <input type="text" id="naziv" name="naziv" required>
+                </div>
+                <div class="form-input">
+                    <label for="trener_id">Odaberi trenera:</label>
+                    <select id="trener_id" name="trener_id" required>
+                        {% for trener in treneri %}
+                            <option value="{{ trener.id }}">{{ trener.ime }} {{ trener.prezime }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit">Dodaj igru</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
