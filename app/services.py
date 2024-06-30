@@ -1,6 +1,16 @@
-from .models import db, Igrac
+# models.py
+from flask_sqlalchemy import SQLAlchemy
 
-def save_player(ime, prezime, korisnicko_ime, igra_id, trener_id):
-    novi_igrac = Igrac(ime=ime, prezime=prezime, korisnicko_ime=korisnicko_ime, igra_id=igra_id, trener_id=trener_id)
-    db.session.add(novi_igrac)
-    db.session.commit()
+db = SQLAlchemy()
+
+class Trener(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    ime = db.Column(db.String(50), nullable=False)
+    prezime = db.Column(db.String(50), nullable=False)
+    igre = db.relationship('Igra', backref='trener', lazy=True)
+
+class Igra(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    naziv = db.Column(db.String(100), nullable=False)
+    slika = db.Column(db.String(100), nullable=False)
+    trener_id = db.Column(db.Integer, db.ForeignKey('trener.id'), nullable=False)
