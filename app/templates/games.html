@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Games</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>E-coach</h1>
+            <a href="{{ url_for('main_html.index') }}" class="btn">Povratak</a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <a href="{{ url_for('main_html.create_game') }}" class="btn">Dodaj novu igru</a>
+            <div class="games">
+                {% for igra in igre %}
+                    <div class="game">
+                        <img src="{{ url_for('static', filename='images/' ~ igra.slika) }}" alt="{{ igra.naziv }}" onclick="openPopup('{{ igra.naziv }}')">
+                        <a href="{{ url_for('main_html.update_game', id=igra.id) }}" class="btn">Uredi</a>
+                        <a href="{{ url_for('main_html.delete_game', id=igra.id) }}" class="btn">Obriši</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <div class="popup" id="gamePopup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Registracija za igru <span id="gameName"></span></h2>
+            <div class="form-input">
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime" placeholder="Unesite ime" required>
+            </div>
+            <div class="form-input">
+                <label for="prezime">Prezime:</label>
+                <input type="text" id="prezime" name="prezime" placeholder="Unesite prezime" required>
+            </div>
+            <div class="form-input">
+                <label for="korisnicko_ime">Korisničko ime:</label>
+                <input type="text" id="korisnicko_ime" name="korisnicko_ime" placeholder="Unesite korisničko ime" required>
+            </div>
+            <div class="form-input">
+                <label for="trener">Odaberi trenera:</label>
+                <select id="trener" name="trener">
+                    {% for trener in treneri %}
+                        <option value="{{ trener.id }}">{{ trener.ime }} {{ trener.prezime }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="button" onclick="submitForm()">Potvrdi</button>
+        </div>
+    </div>
+
+    <script>
+        function openPopup(gameName) {
+            document.getElementById('gameName').textContent = gameName;
+            document.getElementById('gamePopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('gamePopup').style.display = 'none';
+        }
+
+        function submitForm() {
+            // Implement form submission logic here
+            closePopup();
+        }
+    </script>
+</body>
+</html>
